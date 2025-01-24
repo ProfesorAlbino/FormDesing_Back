@@ -1,0 +1,6 @@
+@FormDesing_HostAddress = http://localhost:5119
+
+GET {{FormDesing_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
