@@ -9,5 +9,6 @@ namespace FormDesing.Services.FormDataService
         Task<FormDataDTO> DeleteFormData(Guid id);
         Task<FormDataDTO> GetFormDataById(Guid id);
         Task<IEnumerable<FormDataDTO>> getAllFormDatas();
+        Task<IEnumerable<FormDataDTO>> GetAllDataByForm(Guid id);
     }
 }

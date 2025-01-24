@@ -26,6 +26,11 @@ namespace FormDesing.Services.FormDataService
             return _mapper.Map<FormDataDTO>(await _repository.DeleteFormData(id));
         }
 
+        public async Task<IEnumerable<FormDataDTO>> GetAllDataByForm(Guid id)
+        {
+            return _mapper.Map<IEnumerable<FormDataDTO>>(await _repository.GetAllDataByForm(id));
+        }
+
         public async Task<IEnumerable<FormDataDTO>> getAllFormDatas()
         {
             return _mapper.Map<IEnumerable<FormDataDTO>>(await _repository.GetAllFormDatas());

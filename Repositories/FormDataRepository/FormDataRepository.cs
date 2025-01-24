@@ -29,6 +29,19 @@ namespace FormDesing.Repositories.FormDataRepository
             return formData;
         }
 
+        public async Task<IEnumerable<DatoFormulario>> GetAllDataByForm(Guid id)
+        {
+            IEnumerable<DatoFormulario> formData = await _context.DatoFormularios
+                .Include(formData => formData.IdFormularioInputNavigation)
+                .ThenInclude(formInput => formInput.IdFormularioNavigation)
+                .Where(formInput=> formInput.IdFormularioInputNavigation.IdFormulario == id)
+                .OrderBy(formData => formData.FechaIngreso)
+                .ToListAsync();
+
+            if (formData == null) return null;
+            return formData;
+        }
+
         public async Task<IEnumerable<DatoFormulario>> GetAllFormDatas()
         {
             return await _context.DatoFormularios.ToListAsync();

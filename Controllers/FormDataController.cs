@@ -92,5 +92,23 @@ namespace FormDesing.Controllers
                 return new Response { Success = false };
             }
         }
+
+        [HttpGet]
+        [Route("GetFormDataByForm")]
+        public async Task<Response> GetFormDataByForm(Guid idForm)
+        {
+            try
+            {
+                IEnumerable<FormDataDTO> result = await _service.GetAllDataByForm(idForm);
+                if (result == null) return new Response { Message = "", Success = false };
+
+                return new Response { Data = result, Message = "", Success = true };
+            }
+            catch
+            {
+                return new Response { Success = false };
+            }
+        }
+
     }
 }
