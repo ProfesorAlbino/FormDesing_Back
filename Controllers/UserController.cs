@@ -60,10 +60,13 @@ namespace FormDesing.Controllers
         }
 
         [HttpPost]
-        public async Task<Response> AddUser(UserDTO userDTO)
+        public async Task<Response> AddUser([FromBody] UserDTO userDTO)
         {
             try
             {
+                if(userDTO.Apellido==null || userDTO.Nombre==null) return new Response { Success = false, Message = "" };
+                if(userDTO.Correo==null || userDTO.Contraseña==null) return new Response { Success = false, Message = "" };
+
                 UserDTO result = await _userService.CreateUser(userDTO);
                 if (result == null) return new Response { Success = false, Message = "" };
                 return new Response { Data = result, Success = true, Message="" };
@@ -75,7 +78,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPut]
-        public async Task<Response> UpdateUser(UserDTO user)
+        public async Task<Response> UpdateUser([FromBody] UserDTO user)
         {
             try
             {

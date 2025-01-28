@@ -1,10 +1,10 @@
-﻿using FormDesing.Models.DB;
+﻿using FormDesing.DTOs;
 
 namespace FormDesing.Helpers
 {
     public interface IJwtHelper
     {
-        string GenerateToken(Usuario usuario);
+        string GenerateToken(UserDTO usuario);
         bool ValidateToken(string token);
     }
 }

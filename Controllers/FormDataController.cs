@@ -49,7 +49,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPost]
-        public async Task<Response> AddFormData(FormDataDTO formDataDTO)
+        public async Task<Response> AddFormData([FromBody] FormDataDTO formDataDTO)
         {
             try
             {
@@ -64,7 +64,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPut]
-        public async Task<Response> UpdateFormData(FormDataDTO formData)
+        public async Task<Response> UpdateFormData([FromBody] FormDataDTO formData)
         {
             try
             {

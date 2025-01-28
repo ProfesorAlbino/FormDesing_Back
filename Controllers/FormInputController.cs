@@ -65,7 +65,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPost]
-        public async Task<Response> AddFormInput(FormInputDTO formInputDTO)
+        public async Task<Response> AddFormInput([FromBody] FormInputDTO formInputDTO)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPut]
-        public async Task<Response> UpdateFormInput(FormInputDTO formInput)
+        public async Task<Response> UpdateFormInput([FromBody] FormInputDTO formInput)
         {
             try
             {

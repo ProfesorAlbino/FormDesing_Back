@@ -13,5 +13,7 @@ namespace FormDesing.DTOs
         public string? Correo { get; set; }
 
         public string? Contraseña { get; set; }
+
+        public string? Token { get; set; }
     }
 }

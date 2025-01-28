@@ -1,12 +1,14 @@
 ﻿using FormDesing.DTOs;
 using FormDesing.Models;
 using FormDesing.Services.FormService;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FormDesing.Controllers
 {
     [ApiController]
     [Route("form")]
+    [Authorize]
     public class FormController : Controller
     {
         private readonly IFormService _formService;
@@ -66,7 +68,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPost]
-        public async Task<Response> AddForm(FormDTO formDTO)
+        public async Task<Response> AddForm([FromBody] FormDTO formDTO)
         {
             try
             {
@@ -81,7 +83,7 @@ namespace FormDesing.Controllers
         }
 
         [HttpPut]
-        public async Task<Response> UpdateUser(FormDTO form)
+        public async Task<Response> UpdateUser([FromBody] FormDTO form)
         {
             try
             {
