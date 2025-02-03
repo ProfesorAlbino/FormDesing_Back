@@ -1,4 +1,5 @@
-﻿using FormDesing.Models.DB;
+﻿using Azure.Messaging;
+using FormDesing.Models.DB;
 using Microsoft.EntityFrameworkCore;
 
 namespace FormDesing.Repositories.FormDataRepository
@@ -45,6 +46,16 @@ namespace FormDesing.Repositories.FormDataRepository
         public async Task<IEnumerable<DatoFormulario>> GetAllFormDatas()
         {
             return await _context.DatoFormularios.ToListAsync();
+        }
+
+        public async Task<int> GetDataByUser(Guid idUser)
+        {
+            return await _context.DatoFormularios
+                .Include(dataForm => dataForm.IdFormularioInputNavigation)
+                .ThenInclude(formInput => formInput.IdFormularioNavigation)
+                .ThenInclude(form => form.IdUsuarioNavigation)
+                .Where(dataForm => dataForm.IdFormularioInputNavigation.IdFormularioNavigation.IdUsuarioNavigation.IdUsuario.Equals(idUser))
+                .CountAsync();
         }
 
         public async Task<DatoFormulario> GetFormDataById(Guid id)

@@ -42,6 +42,16 @@ namespace FormDesing.Services.FormService
             return _mapper.Map<FormDTO>(await _formRepository.GetFormById(id));
         }
 
+        public async Task<IEnumerable<FormDTO>> GetTopForms(int num, Guid idUser)
+        {
+            return _mapper.Map<IEnumerable<FormDTO>>(await _formRepository.GetTopForms(num, idUser));
+        }
+
+        public async Task<int> TotalForms(Guid userId)
+        {
+            return await _formRepository.TotalForms(userId);
+        }
+
         public async Task<FormDTO> UpdateForm(FormDTO form)
         {
             return _mapper.Map<FormDTO>(await _formRepository.UpdateForm(_mapper.Map<Formulario>(form)));

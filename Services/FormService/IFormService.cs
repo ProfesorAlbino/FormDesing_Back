@@ -1,5 +1,4 @@
 ﻿using FormDesing.DTOs;
-using FormDesing.Models.DB;
 
 namespace FormDesing.Services.FormService
 {
@@ -11,5 +10,7 @@ namespace FormDesing.Services.FormService
         Task<FormDTO> GetFormsById(Guid id);
         Task<IEnumerable<FormDTO>> getAllForms();
         Task<IEnumerable<FormDTO>> GetAllFormByUser(Guid userId);
+        Task<int> TotalForms(Guid userId);
+        Task<IEnumerable<FormDTO>> GetTopForms(int num, Guid idUsuario);
     }
 }

@@ -10,5 +10,6 @@ namespace FormDesing.Services.FormDataService
         Task<FormDataDTO> GetFormDataById(Guid id);
         Task<IEnumerable<FormDataDTO>> getAllFormDatas();
         Task<IEnumerable<FormDataDTO>> GetAllDataByForm(Guid id);
+        Task<int> GetDataByUser(Guid idUser);
     }
 }

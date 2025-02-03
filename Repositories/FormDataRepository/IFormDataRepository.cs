@@ -10,5 +10,6 @@ namespace FormDesing.Repositories.FormDataRepository
         Task<DatoFormulario> UpdateFormData(DatoFormulario formData);
         Task<DatoFormulario> DeleteFormData(Guid id);
         Task<IEnumerable<DatoFormulario>> GetAllDataByForm(Guid id);
+        Task<int> GetDataByUser(Guid idUser);
     }
 }

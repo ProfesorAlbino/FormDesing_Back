@@ -48,6 +48,23 @@ namespace FormDesing.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetFormDataByUser")]
+        public async Task<Response> GetFormDataByUser(Guid idUser)
+        {
+            try
+            {
+                int result = await _service.GetDataByUser(idUser);
+                if (result == null) return new Response { Message = "", Success = false };
+
+                return new Response { Data = result, Message = "", Success = true };
+            }
+            catch
+            {
+                return new Response { Success = false };
+            }
+        }
+
         [HttpPost]
         public async Task<Response> AddFormData([FromBody] FormDataDTO formDataDTO)
         {

@@ -44,6 +44,22 @@ namespace FormDesing.Repositories.FormRepository
             return await _context.Formularios.FindAsync(id);
         }
 
+        public async Task<IEnumerable<Formulario>> GetTopForms(int num, Guid idUsuario)
+        {
+            return await _context.Formularios
+                .Where(form => form.IdUsuario.Equals(idUsuario))
+                .OrderBy(form => form.FechaCreacion)
+                .Take(num)
+                .ToListAsync();
+        }
+
+        public async Task<int> TotalForms(Guid userId)
+        {
+            return await _context.Formularios
+                .Where(f => f.IdUsuario.Equals(userId))
+                .CountAsync();
+        }
+
         public async Task<Formulario> UpdateForm(Formulario form)
         {
             _context.Formularios.Update(form);

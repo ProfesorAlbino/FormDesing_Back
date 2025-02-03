@@ -7,6 +7,7 @@ using FormDesing.Repositories.FormRepository;
 using FormDesing.Repositories.InputRepository;
 using FormDesing.Repositories.UserRepository;
 using FormDesing.Services.AuthService;
+using FormDesing.Services.FormDataService;
 using FormDesing.Services.FormInputService;
 using FormDesing.Services.FormService;
 using FormDesing.Services.InputService;
@@ -60,6 +61,7 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IInputService, InputService>();
 builder.Services.AddScoped<IFormService, FormService>();
 builder.Services.AddScoped<IFormInputService, FormInputService>();
+builder.Services.AddScoped<IFormaDataService, FormDataService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 
 // Configurar CORS

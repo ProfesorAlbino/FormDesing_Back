@@ -36,6 +36,11 @@ namespace FormDesing.Services.FormDataService
             return _mapper.Map<IEnumerable<FormDataDTO>>(await _repository.GetAllFormDatas());
         }
 
+        public async Task<int> GetDataByUser(Guid idUser)
+        {
+            return await _repository.GetDataByUser(idUser);
+        }
+
         public async Task<FormDataDTO> GetFormDataById(Guid id)
         {
             return _mapper.Map<FormDataDTO>(await _repository.GetFormDataById(id));

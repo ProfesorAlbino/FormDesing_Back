@@ -8,7 +8,7 @@ namespace FormDesing.Controllers
 {
     [ApiController]
     [Route("form")]
-    [Authorize]
+    
     public class FormController : Controller
     {
         private readonly IFormService _formService;
@@ -57,6 +57,40 @@ namespace FormDesing.Controllers
             try
             {
                 IEnumerable<FormDTO> result = await _formService.GetAllFormByUser(idUser);
+                if (result == null) return new Response { Message = "", Success = false };
+
+                return new Response { Data = result, Message = "", Success = true };
+            }
+            catch
+            {
+                return new Response { Success = false };
+            }
+        }
+
+        [HttpGet]
+        [Route("GetTotalForms")]
+        public async Task<Response> GetTotalForms(Guid idUser)
+        {
+            try
+            {
+                int result = await _formService.TotalForms(idUser);
+                if (result == null) return new Response { Message = "", Success = false };
+
+                return new Response { Data = result, Message = "", Success = true };
+            }
+            catch
+            {
+                return new Response { Success = false };
+            }
+        }
+
+        [HttpGet]
+        [Route("GetTopForms")]
+        public async Task<Response> GetTopForms(int num, Guid idUsuario)
+        {
+            try
+            {
+                IEnumerable<FormDTO> result = await _formService.GetTopForms(num, idUsuario);
                 if (result == null) return new Response { Message = "", Success = false };
 
                 return new Response { Data = result, Message = "", Success = true };

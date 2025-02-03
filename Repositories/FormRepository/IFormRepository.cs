@@ -10,5 +10,7 @@ namespace FormDesing.Repositories.FormRepository
         Task<Formulario> UpdateForm(Formulario form);
         Task<Formulario> DeleteForm(Guid id);
         Task<IEnumerable<Formulario>> GetAllFormByUser(Guid userId);
+        Task<int> TotalForms(Guid userId);
+        Task<IEnumerable<Formulario>> GetTopForms(int num, Guid idUser);
     }
 }
